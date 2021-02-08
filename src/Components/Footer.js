@@ -3,6 +3,7 @@ import Images from "../Assets/Images"
 
 const StyledFooter = styled.div`
     display: flex;
+    flex-direction: row;
     justify-content: center;
     background-color: white;
     border-radius: 0 0 27rem 27rem;

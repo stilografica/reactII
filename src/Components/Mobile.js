@@ -32,12 +32,12 @@ const StyledArticle = styled.div`
 `;
 
 export default () => {
-    return(
-      <StyledArticle>
-        <Header />
-        <Welcome name="Marc"/>
-        <Content />
-        <Footer />
-      </StyledArticle>
+  return(
+    <StyledArticle>
+      <Header />
+      <Welcome name="Marc"/>
+      <Content />
+      <Footer />
+    </StyledArticle>
     )
 }
