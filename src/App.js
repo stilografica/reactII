@@ -1,12 +1,12 @@
-//import React from "react"
-import Linia from "./Linia"
-import Textos from "./textos.json"
+import StyleContainer from "./StyleContainer"
+import StyleGlobal from "./StyleGlobal"
+import Mobile from "./Components/Mobile"
 
 export default () => {
-    const textComponent = Textos.map(linia=> <Linia text = {linia} />)
     return (
-        <div>
-            {textComponent}
-       </div>
+        <StyleContainer>
+            <StyleGlobal />
+            <Mobile />
+       </StyleContainer>
     );
 };
