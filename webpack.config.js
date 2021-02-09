@@ -25,6 +25,7 @@ const publicPath = development ? '/' : productionPath;
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './src/index.html',
   hash: !development,
+  favicon: './src/Assets/Images/favicon.png',
 });
 
 const processEnvPlugin = new webpack.DefinePlugin({
