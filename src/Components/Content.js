@@ -1,17 +1,12 @@
-import styled from 'styled-components';
-import Linia from "./Linia"
-import Textos from "../textos.json"
 import {useState} from "react"
+import styled from 'styled-components';
+import Linia, {StyledParagraph} from "./Linia"
+import Textos from "../textos.json"
 
 const StyledContent = styled.div`
     padding: 0 2.5rem 0 2.5rem;
     color: #fff;
-    height: 250px;
-        p{
-            font-family: 'Merriweather', serif;
-            font-size: 1.1rem;
-            line-height: 1.6rem;
-        }
+    height: 350px;
 `;
 
 const StyledButton = styled.button`
@@ -31,25 +26,28 @@ const StyledButton = styled.button`
     }
 `;
 
-let i = 0;
+let i = -1;
+let textTeatre;
 
+const textState = Textos.map(linia=> <Linia text = {linia} />)
 export default () => {
-    const textTeatre = Textos.map(linia=> <Linia text = {linia} />)
-    const [sentence, SetSentence] = useState(textTeatre[0])
+    const [sentence, SetSentence] = useState(textState)
     //Función para acceder a la siguiente frase
-    const next = () =>{
+    const next = () => {
         i++;
-        if( i < textTeatre.length) {
-            SetSentence(textTeatre[i]);
+        if( i < textState.length) {
+            getMap();
+            SetSentence(textTeatre);
         } else { //Condición para que por mucho que se intente avanzar más allà del array no se pueda
             i=6;  
         }
     }
     //Función para retroceder a la anterior frase
-    const prev = () =>{
+    const prev = () => {
         i--;
-        if(i >= 0) {
-            SetSentence(textTeatre[i]);
+        if( i >= 0) {
+            getMap();
+            SetSentence(textTeatre);
         } else { //Condición para que por mucho que se intente retroceder más allà del array no se pueda
             i = 0;   
         }
@@ -62,3 +60,10 @@ export default () => {
         </StyledContent>
     );
 };
+//Función en la que creo otro map para poder hacer la comparación "linia==textState[i].props.text"
+const getMap = () =>{
+    textTeatre = Textos.map((linia)=> {
+        return( linia == textState[i].props.text ? <StyledParagraph isMarked={true}>{linia}</StyledParagraph> : <StyledParagraph>{linia}</StyledParagraph>
+        )
+    })
+}

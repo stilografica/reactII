@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-const StyledParagraph = styled.p`
+export const StyledParagraph = styled.p`
     font-family: 'Merriweather', serif;
     color: #fff;
-    line-height: 1.5rem;
+    line-height: 1.3rem;
+    background-color: ${({isMarked}) => isMarked ? "red" : "transparent"};
     :before{
         content: "-";
     }
@@ -16,3 +17,4 @@ export default (props) => {
         </StyledParagraph>
     )
 }
+
